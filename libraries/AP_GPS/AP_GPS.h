@@ -73,14 +73,6 @@ public:
     /// more) to process incoming data.
     void update(void);
 
-    //True if any of the underlying GPS Drivers are ready to enter
-    //a dgps-based fix beyond 3D lock, such as RTK mode. 
-    bool can_calculate_base_pos(void);
-
-    //Allows the underlying GPS Drivers to enter a differential lock
-    //Might cause a position jump, thus only do this on the ground.
-    void calculate_base_pos(void);
-
     // GPS driver types
     enum GPS_Type {
         GPS_TYPE_NONE  = 0,
