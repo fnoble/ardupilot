@@ -88,7 +88,7 @@ private:
     static void _gps_nmea_printf(const char *fmt, ...);
     static void _update_gps_nmea(const struct gps_data *d);
     static void _sbp_send_message(uint16_t msg_type, uint16_t sender_id, uint8_t len, uint8_t *payload);
-    static void _update_gps_sbp(const struct gps_data *d, bool sim_rtk);
+    static void _update_gps_sbp(const struct gps_data *d);
 
     static void _update_gps(double latitude, double longitude, float altitude,
 			    double speedN, double speedE, double speedD, bool have_lock);
