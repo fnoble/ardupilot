@@ -15,10 +15,11 @@
  */
 
 //
-//  u-blox UBX GPS driver for ArduPilot and ArduPilotMega.
-//	Code by Michael Smith, Jordi Munoz and Jose Julio, DIYDrones.com
+//  Swift Navigation SBP GPS driver for ArduPilot.
+//	Code by Niels Joubert
 //
-//  UBlox Lea6H protocol: http://www.u-blox.com/images/downloads/Product_Docs/u-blox6_ReceiverDescriptionProtocolSpec_%28GPS.G6-SW-10018%29.pdf
+//  Swift Binary Protocol format: http://docs.swift-nav.com/
+//
 
 #ifndef __AP_GPS_SBP_H__
 #define __AP_GPS_SBP_H__
@@ -28,12 +29,16 @@
 class AP_GPS_SBP : public AP_GPS_Backend
 {
 public:
-	AP_GPS_SBP(AP_GPS &_gps, AP_GPS::GPS_State &_state, AP_HAL::UARTDriver *_port);
+    AP_GPS_SBP(AP_GPS &_gps, AP_GPS::GPS_State &_state, AP_HAL::UARTDriver *_port);
 
     // Methods
     bool read();
 
     static bool _detect(struct SBP_detect_state &state, uint8_t data);
+
+private:
+
+    static const uint8_t SBP_PREAMBLE = 0x55;
 
 };
 
