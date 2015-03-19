@@ -219,34 +219,6 @@ AP_GPS::detect_instance(uint8_t instance)
 	}
 }
 
-bool 
-AP_GPS::can_calculate_base_pos(void)
-{
-#if GPS_RTK_AVAILABLE
-    for (uint8_t i=0; i<GPS_MAX_INSTANCES; i++) {
-        if (drivers[i] != NULL && drivers[i]->can_calculate_base_pos()) {
-            return true;
-        }
-    }
-#endif
-    return false;
-}
-
-/*
-    Tells the underlying GPS drivers to capture its current position as home.
- */
-void 
-AP_GPS::calculate_base_pos(void) 
-{
-#if GPS_RTK_AVAILABLE
-    for (uint8_t i = 0; i<GPS_MAX_INSTANCES; i++) {
-        if (drivers[i] != NULL && drivers[i]->can_calculate_base_pos()) {
-            drivers[i]->calculate_base_pos(); 
-        }
-    }
-#endif
-}
-
 AP_GPS::GPS_Status 
 AP_GPS::highest_supported_status(uint8_t instance) const
 {
